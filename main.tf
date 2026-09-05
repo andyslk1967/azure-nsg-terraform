@@ -6,6 +6,13 @@ terraform {
     }
   }
   required_version = ">= 1.3.0"
+
+  backend "azurerm" {
+    resource_group_name  = "rg1"
+    storage_account_name = "tfstate6422cdc6"
+    container_name       = "tfstate"
+    key                  = "terraform.tfstate"
+  }
 }
 
 provider "azurerm" {
@@ -31,7 +38,7 @@ resource "azurerm_network_security_group" "nsg_port3342" {
     source_port_range            = "*"
     destination_port_range       = "3342"
     source_address_prefixes      = var.allowed_source_address_prefixes
-    destination_address_prefix   = "10.16.0.0/24"
+    destination_address_prefix   = "*"
   }
 
   tags = {
