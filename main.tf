@@ -31,7 +31,7 @@ resource "azurerm_network_security_group" "nsg_port3342" {
     source_port_range            = "*"
     destination_port_range       = "3342"
     source_address_prefixes      = var.allowed_source_address_prefixes
-    destination_address_prefix   = "*"
+    destination_address_prefix   = "10.16.0.0/24"
   }
 
   tags = {
